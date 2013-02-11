@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,8 +22,10 @@ public class Main extends javax.swing.JFrame {
 
 	private JMenuItem helpMenuItem;
 	private JMenu jMenu5;
+	private JLabel aboutUs_text3;
+	private JLabel aboutUs_text2;
+	private JLabel aboutUs_text1;
 	private AbstractAction aboutUs_dispose_action;
-	private JTextArea aboutUs_text;
 	private JButton aboutUs_dispose;
 	private JDialog AboutUs_Dialog;
 	private AbstractAction aboutUs_click;
@@ -38,10 +41,12 @@ public class Main extends javax.swing.JFrame {
 	private JMenuItem closeFileMenuItem;
 	private JMenuItem saveAsMenuItem;
 	private JMenuItem saveMenuItem;
+	private JLabel aboutUs_text4;
 	private JMenuItem openFileMenuItem;
 	private JMenuItem newFileMenuItem;
 	private JMenu jMenu3;
 	private JMenuBar jMenuBar1;
+	public Hotel_Manage_Panel hotel_management_panel;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -113,26 +118,17 @@ public class Main extends javax.swing.JFrame {
 					{
 						cutMenuItem = new JMenuItem();
 						jMenu4.add(cutMenuItem);
-						cutMenuItem.setText("Cut");
+						cutMenuItem.setText("Hotel Management");
+						cutMenuItem.addMouseListener(new MouseAdapter() {
+							public void mousePressed(MouseEvent evt) {
+								cutMenuItemMousePressed(evt);
+							}
+						});
 					}
 					{
 						copyMenuItem = new JMenuItem();
 						jMenu4.add(copyMenuItem);
-						copyMenuItem.setText("Copy");
-					}
-					{
-						pasteMenuItem = new JMenuItem();
-						jMenu4.add(pasteMenuItem);
-						pasteMenuItem.setText("Paste");
-					}
-					{
-						jSeparator1 = new JSeparator();
-						jMenu4.add(jSeparator1);
-					}
-					{
-						deleteMenuItem = new JMenuItem();
-						jMenu4.add(deleteMenuItem);
-						deleteMenuItem.setText("Delete");
+						copyMenuItem.setText("Staff Management");
 					}
 				}
 				{
@@ -184,17 +180,26 @@ public class Main extends javax.swing.JFrame {
 			AboutUs_DialogLayout.setHorizontalGroup(AboutUs_DialogLayout.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(AboutUs_DialogLayout.createParallelGroup()
-				    .addComponent(getAboutUs_text(), GroupLayout.Alignment.LEADING, 0, 336, Short.MAX_VALUE)
+				    .addComponent(getAboutUs_text1(), GroupLayout.Alignment.LEADING, 0, 336, Short.MAX_VALUE)
+				    .addComponent(getAboutUs_text2(), GroupLayout.Alignment.LEADING, 0, 336, Short.MAX_VALUE)
+				    .addComponent(getAboutUs_text3(), GroupLayout.Alignment.LEADING, 0, 336, Short.MAX_VALUE)
+				    .addComponent(getAboutUs_text4(), GroupLayout.Alignment.LEADING, 0, 336, Short.MAX_VALUE)
 				    .addGroup(GroupLayout.Alignment.LEADING, AboutUs_DialogLayout.createSequentialGroup()
-				        .addGap(0, 276, Short.MAX_VALUE)
+				        .addGap(0, 275, Short.MAX_VALUE)
 				        .addComponent(getAboutUs_dispose(), GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
 				.addContainerGap());
 			AboutUs_DialogLayout.setVerticalGroup(AboutUs_DialogLayout.createSequentialGroup()
 				.addContainerGap()
-				.addComponent(getAboutUs_text(), 0, 139, Short.MAX_VALUE)
-				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 1, GroupLayout.PREFERRED_SIZE)
+				.addComponent(getAboutUs_text1(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addComponent(getAboutUs_text2(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+				.addComponent(getAboutUs_text3(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+				.addComponent(getAboutUs_text4(), GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+				.addGap(59)
 				.addComponent(getAboutUs_dispose(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
-				.addContainerGap());
+				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 		}
 		return AboutUs_Dialog;
 	}
@@ -207,15 +212,7 @@ public class Main extends javax.swing.JFrame {
 		}
 		return aboutUs_dispose;
 	}
-	
-	private JTextArea getAboutUs_text() {
-		if(aboutUs_text == null) {
-			aboutUs_text = new JTextArea();
-			aboutUs_text.setText("Testing");
-		}
-		return aboutUs_text;
-	}
-	
+
 	private AbstractAction getAboutUs_dispose_action() {
 		if(aboutUs_dispose_action == null) {
 			aboutUs_dispose_action = new AbstractAction("OK", null) {
@@ -225,6 +222,45 @@ public class Main extends javax.swing.JFrame {
 			};
 		}
 		return aboutUs_dispose_action;
+	}
+	
+	private JLabel getAboutUs_text1() {
+		if(aboutUs_text1 == null) {
+			aboutUs_text1 = new JLabel();
+			aboutUs_text1.setText("The Job Allocation System is designed for allocating temp-");
+		}
+		return aboutUs_text1;
+	}
+	
+	private JLabel getAboutUs_text2() {
+		if(aboutUs_text2 == null) {
+			aboutUs_text2 = new JLabel();
+			aboutUs_text2.setText("orary worker for Hotels.This software is designed and own-");
+		}
+		return aboutUs_text2;
+	}
+	
+	private JLabel getAboutUs_text3() {
+		if(aboutUs_text3 == null) {
+			aboutUs_text3 = new JLabel();
+			aboutUs_text3.setText("ed by Keith(tsoikeith1125@gmail.com) and Moon(moon-");
+		}
+		return aboutUs_text3;
+	}
+	
+	private JLabel getAboutUs_text4() {
+		if(aboutUs_text4 == null) {
+			aboutUs_text4 = new JLabel();
+			aboutUs_text4.setText("ctp@gmail.com). All rights reserved.");
+		}
+		return aboutUs_text4;
+	}
+
+	private void cutMenuItemMousePressed(MouseEvent evt) {
+		System.out.println("cutMenuItem.mousePressed, event="+evt);
+		//TODO add your code for cutMenuItem.mousePressed
+		hotel_management_panel = new Hotel_Manage_Panel();
+		hotel_management_panel.doLayout();
 	}
 
 }
