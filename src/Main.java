@@ -260,6 +260,7 @@ public class Main extends javax.swing.JFrame {
 		System.out.println("cutMenuItem.mousePressed, event="+evt);
 		//TODO add your code for cutMenuItem.mousePressed
 		hotel_management_panel = new Hotel_Manage_Panel();
+		hotel_management_panel.setVisible(true);
 	}
 
 }
